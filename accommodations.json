@@ -1,0 +1,15 @@
+{
+    "accommodations": [
+      {"type": "hotel", "name": "Hikka Tranz by Cinnamon", "address": "Hikkaduwa, Sri Lanka", "rating": 4.5, "location": "beachside"},
+      {"type": "hotel", "name": "Coral Sands Hotel", "address": "Hikkaduwa, Sri Lanka", "rating": 4.2, "location": "beachside"},
+      {"type": "hotel", "name": "Citrus Hikkaduwa", "address": "Hikkaduwa, Sri Lanka", "rating": 4.0, "location": "beachside"},
+      {"type": "hotel", "name": "Hikkaduwa Beach Hotel", "address": "Hikkaduwa, Sri Lanka", "rating": 3.8, "location": "beachside"},
+      {"type": "hotel", "name": "Hotel Refresh Blue", "address": "Hikkaduwa, Sri Lanka", "rating": 4.1, "location": "beachside"},
+      {"type": "villa", "name": "Villa Saffron Hikkaduwa", "address": "Hikkaduwa, Sri Lanka", "rating": 4.9, "location": "beachside"},
+      {"type": "villa", "name": "Villa Shanthi", "address": "Hikkaduwa, Sri Lanka", "rating": 4.8, "location": "beachside"},
+      {"type": "villa", "name": "Villa Tara", "address": "Hikkaduwa, Sri Lanka", "rating": 4.7, "location": "beachside"},
+      {"type": "villa", "name": "Villa 46", "address": "Hikkaduwa, Sri Lanka", "rating": 4.6, "location": "beachside"},
+      {"type": "villa", "name": "Villa Birdlake", "address": "Hikkaduwa, Sri Lanka", "rating": 4.5, "location": "beachside"}
+    ]
+  }
+  

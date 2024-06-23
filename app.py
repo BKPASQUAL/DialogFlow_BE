@@ -3,48 +3,16 @@ import json
 
 app = Flask(__name__)
 
-# Places with their activities
-places = [
-    {'name': 'Unawatuna Beach', 'latitude': 6.0041, 'longitude': 80.2505, 'activities': ['beach', 'surfing']},
-    {'name': 'Hikkaduwa Beach', 'latitude': 6.1399, 'longitude': 80.1021, 'activities': ['beach', 'surfing']},
-    {'name': 'Mirissa Beach', 'latitude': 5.9480, 'longitude': 80.4564, 'activities': ['beach', 'surfing']},
-    {'name': 'Galle Fort', 'latitude': 6.0249, 'longitude': 80.2170, 'activities': ['sightseeing', 'history', 'walk']},
-    {'name': 'Japanese Peace Pagoda', 'latitude': 6.0191, 'longitude': 80.2376, 'activities': ['sightseeing', 'photography', 'meditation']},
-    {'name': 'Galle Clock Tower', 'latitude': 6.0250, 'longitude': 80.2173, 'activities': ['sightseeing', 'photography']},
-    {'name': 'Galle Dutch Hospital', 'latitude': 6.0273, 'longitude': 80.2183, 'activities': ['shopping', 'dining', 'sightseeing']},
-    {'name': 'Rumassala', 'latitude': 6.0011, 'longitude': 80.2707, 'activities': ['hiking', 'nature', 'sightseeing']},
-    {'name': 'Hikkaduwa Coral Sanctuary', 'latitude': 6.1401, 'longitude': 80.1011, 'activities': ['snorkeling', 'diving', 'nature']},
-    {'name': 'Hikkaduwa Surfing Spots', 'latitude': 6.1385, 'longitude': 80.0998, 'activities': ['surfing']},
-    {'name': 'Hikkaduwa Nightclubs', 'latitude': 6.1371, 'longitude': 80.1042, 'activities': ['nightlife', 'dancing']},
-    {'name': 'Unawatuna Nightclubs', 'latitude': 6.0090, 'longitude': 80.2510, 'activities': ['nightlife', 'dancing']},
-    {'name': 'The Everest Futsal Court Galle', 'latitude': 6.0281, 'longitude': 80.2178, 'activities': ['sports', 'futsal']},
-    {'name': 'Jungle Beach', 'latitude': 6.0063, 'longitude': 80.2460, 'activities': ['beach', 'snorkeling', 'hiking']},
-    {'name': 'Koggala Lake', 'latitude': 5.9972, 'longitude': 80.3203, 'activities': ['boating', 'nature', 'bird watching']},
-    {'name': 'Sea Turtle Hatchery', 'latitude': 6.0770, 'longitude': 80.1402, 'activities': ['nature', 'education']},
-    {'name': 'National Maritime Museum', 'latitude': 6.0250, 'longitude': 80.2174, 'activities': ['sightseeing', 'history', 'education']},
-    {'name': 'Stilt Fishermen', 'latitude': 5.9800, 'longitude': 80.3600, 'activities': ['photography', 'cultural']},
-    {'name': 'Martin Wickramasinghe Folk Museum', 'latitude': 5.9706, 'longitude': 80.3465, 'activities': ['sightseeing', 'history', 'cultural']}
-]
+# Load data from JSON files
+with open('places.json', 'r') as f:
+    places = json.load(f)['places']
 
-# Hotels and Villas in Hikkaduwa
-accommodations = [
-    {'type': 'hotel', 'name': 'Hikka Tranz by Cinnamon', 'address': 'Hikkaduwa, Sri Lanka', 'rating': 4.5},
-    {'type': 'hotel', 'name': 'Coral Sands Hotel', 'address': 'Hikkaduwa, Sri Lanka', 'rating': 4.2},
-    {'type': 'hotel', 'name': 'Citrus Hikkaduwa', 'address': 'Hikkaduwa, Sri Lanka', 'rating': 4.0},
-    {'type': 'hotel', 'name': 'Hikkaduwa Beach Hotel', 'address': 'Hikkaduwa, Sri Lanka', 'rating': 3.8},
-    {'type': 'hotel', 'name': 'Hotel Refresh Blue', 'address': 'Hikkaduwa, Sri Lanka', 'rating': 4.1},
-    {'type': 'villa', 'name': 'Villa Saffron Hikkaduwa', 'address': 'Hikkaduwa, Sri Lanka', 'rating': 4.9},
-    {'type': 'villa', 'name': 'Villa Shanthi', 'address': 'Hikkaduwa, Sri Lanka', 'rating': 4.8},
-    {'type': 'villa', 'name': 'Villa Tara', 'address': 'Hikkaduwa, Sri Lanka', 'rating': 4.7},
-    {'type': 'villa', 'name': 'Villa 46', 'address': 'Hikkaduwa, Sri Lanka', 'rating': 4.6},
-    {'type': 'villa', 'name': 'Villa Birdlake', 'address': 'Hikkaduwa, Sri Lanka', 'rating': 4.5}
-]
+with open('accommodations.json', 'r') as f:
+    accommodations = json.load(f)['accommodations']
 
-# Load historical places data
 with open('places_history.json', 'r') as f:
     places_history = json.load(f)['places']
 
-# New route to return "Hello, World!"
 @app.route('/hello', methods=['GET'])
 def hello_world():
     return "Hello, World!"
@@ -78,67 +46,77 @@ def webhook():
             response_text = f"Sorry, there are no places in Hikkaduwa offering {', '.join(selected_activities)}."
 
     # Handle "FindHotels" intent
-    elif intent == "FindHotels":
-        accommodation_type = parameters.get('hotelType', '').lower()
-        if accommodation_type in ['hotel', 'villa']:
-            filtered_accommodations = [acc for acc in accommodations if acc['type'] == accommodation_type]
-            if filtered_accommodations:
-                response_text += f"Here are some recommended {accommodation_type}s in Hikkaduwa:\n\n"
-                for acc in filtered_accommodations:
-                    response_text += f"{'Hotel' if accommodation_type == 'hotel' else 'Villa'} Name: {acc['name']}\n"
-                    response_text += f"Address: {acc['address']}\n"
-                    response_text += f"Rating: {acc['rating']}\n\n"
-            else:
-                response_text = f"Sorry, there are no {accommodation_type}s available in Hikkaduwa."
+    # elif intent == "FindHotels":
+    #     accommodation_type = parameters.get('hotelType', '').lower()
+    #     hotel_place = parameters.get('hotelplace', '').lower()
+    #     if accommodation_type in ['hotel', 'villa']:
+    #         if hotel_place in ['beachside', 'without beachside']:
+    #             location_filter = 'beachside' if hotel_place == 'beachside' else 'without beachside'
+    #             filtered_accommodations = [acc for acc in accommodations if acc['type'] == accommodation_type and acc['location'] == location_filter]
+    #             if filtered_accommodations:
+    #                 response_text += f"Here are some recommended {accommodation_type}s in Hikkaduwa ({hotel_place}):\n\n"
+    #                 for acc in filtered_accommodations:
+    #                     response_text += f"{'Hotel' if accommodation_type == 'hotel' else 'Villa'} Name: {acc['name']}\n"
+    #                     response_text += f"Address: {acc['address']}\n"
+    #                     response_text += f"Rating: {acc['rating']}\n\n"
+    #             else:
+    #                 response_text = f"Sorry, there are no {accommodation_type}s available in Hikkaduwa ({hotel_place})."
+    #         else:
+    #             response_text = "Please specify if you want a beachside or without beachside accommodation."
+    #     else:
+    #         response_text = "What kind of accommodation are you looking for: hotel or villa?"
+
+    # Handle "SelectBeachHotelInHikkaduwa" intent
+    elif intent == "SelectBeachHotelInHikkaduwa":
+        filtered_accommodations = [acc for acc in accommodations if acc['type'] == 'hotel' and acc['location'] == 'beachside']
+        if filtered_accommodations:
+            response_text += f"Here are some recommended beachside hotels in Hikkaduwa:\n\n"
+            for acc in filtered_accommodations:
+                response_text += f"Hotel Name: {acc['name']}\n"
+                response_text += f"Address: {acc['address']}\n"
+                response_text += f"Rating: {acc['rating']}\n\n"
         else:
-            response_text = "What kind of accommodation are you looking for: hotel or villa?"
+            response_text = "Sorry, there are no beachside hotels available in Hikkaduwa."
 
     # Handle "SpecifyAccommodationType" intent
-    elif intent == "selectHotelorVilla":
-        accommodation_type = parameters.get('hotelType', '').lower()
-        if accommodation_type in ['hotel', 'villa']:
-            filtered_accommodations = [acc for acc in accommodations if acc['type'] == accommodation_type]
-            if filtered_accommodations:
-                response_text += f"Here are some recommended {accommodation_type}s in Hikkaduwa:\n\n"
-                for acc in filtered_accommodations:
-                    response_text += f"{'Hotel' if accommodation_type == 'hotel' else 'Villa'} Name: {acc['name']}\n"
-                    response_text += f"Address: {acc['address']}\n"
-                    response_text += f"Rating: {acc['rating']}\n\n"
-            else:
-                response_text = f"Sorry, there are no {accommodation_type}s available in Hikkaduwa."
-        else:
-            response_text = "Please specify whether you are looking for a hotel or a villa."
+    # elif intent == "SpecifyAccommodationType":
+    #     accommodation_type = parameters.get('hotelType', '').lower()
+    #     if accommodation_type in ['hotel', 'villa']:
+    #         filtered_accommodations = [acc for acc in accommodations if acc['type'] == accommodation_type]
+    #         if filtered_accommodations:
+    #             response_text += f"Here are some recommended {accommodation_type}s in Hikkaduwa:\n\n"
+    #             for acc in filtered_accommodations:
+    #                 response_text += f"{'Hotel' if accommodation_type == 'hotel' else 'Villa'} Name: {acc['name']}\n"
+    #                 response_text += f"Address: {acc['address']}\n"
+    #                 response_text += f"Rating: {acc['rating']}\n\n"
+    #         else:
+    #             response_text = f"Sorry, there are no {accommodation_type}s available in Hikkaduwa."
+    #     else:
+    #         response_text = "Please specify whether you are looking for a hotel or a villa."
 
-    # Handle "FindHistory" intent
-    elif intent == "PlacesInGalle":
-        place_name = parameters.get('places', '').title()
-        found = False
+    # Handle "HistoricalPlaces" intent
+    elif intent == "HistoricalPlaces":
+        city = parameters.get('city', '').lower()
+        recommended_places = [place for place in places_history if city in place['location'].lower()]
         
-        for place in places_history:
-            if place['name'] == place_name:
-                response_text += f"Here is the historical information about {place_name}:\n\n"
-                response_text += place['history']
-                found = True
-                break
-        
-        if not found:
-            response_text = f"Sorry, I don't have historical information about {place_name}."
-    
-    # Default response for other intents
-    else:
-        area = parameters.get('geo-city')
-        activities = parameters.get('Activities')
-        filtered_places = [place for place in places if area in place['name'] and any(activity in place['activities'] for activity in activities)]
-        
-        if filtered_places:
-            response_text += f"Here are some places in {area} where you can do {', '.join(activities)}:\n\n"
-            for place in filtered_places:
+        if recommended_places:
+            response_text += f"Here are some historical places in {city.capitalize()}:\n\n"
+            for place in recommended_places:
                 response_text += f"{place['name']}:\n"
-                response_text += f"Activities: {', '.join(place['activities'])}\n\n"
+                response_text += f"Description: {place['description']}\n"
+                response_text += f"Location: {place['location']}\n\n"
         else:
-            response_text = f"Sorry, there are no places in {area} offering {', '.join(activities)}."
+            response_text = f"Sorry, there are no historical places listed in {city.capitalize()}."
 
+    # Handle unrecognized intent
+    else:
+        response_text = "Sorry, I didn't understand that request."
+
+    # Log the response for debugging
+    print(f"Response text: {response_text}")
+    
+    # Return the response text
     return jsonify({'fulfillmentText': response_text})
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True)

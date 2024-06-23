@@ -1,0 +1,24 @@
+{
+    "places": [
+      {"name": "Unawatuna Beach", "latitude": 6.0041, "longitude": 80.2505, "activities": ["beach", "surfing"]},
+      {"name": "Hikkaduwa Beach", "latitude": 6.1399, "longitude": 80.1021, "activities": ["beach", "surfing"]},
+      {"name": "Mirissa Beach", "latitude": 5.9480, "longitude": 80.4564, "activities": ["beach", "surfing"]},
+      {"name": "Galle Fort", "latitude": 6.0249, "longitude": 80.2170, "activities": ["sightseeing", "history", "walk"]},
+      {"name": "Japanese Peace Pagoda", "latitude": 6.0191, "longitude": 80.2376, "activities": ["sightseeing", "photography", "meditation"]},
+      {"name": "Galle Clock Tower", "latitude": 6.0250, "longitude": 80.2173, "activities": ["sightseeing", "photography"]},
+      {"name": "Galle Dutch Hospital", "latitude": 6.0273, "longitude": 80.2183, "activities": ["shopping", "dining", "sightseeing"]},
+      {"name": "Rumassala", "latitude": 6.0011, "longitude": 80.2707, "activities": ["hiking", "nature", "sightseeing"]},
+      {"name": "Hikkaduwa Coral Sanctuary", "latitude": 6.1401, "longitude": 80.1011, "activities": ["snorkeling", "diving", "nature"]},
+      {"name": "Hikkaduwa Surfing Spots", "latitude": 6.1385, "longitude": 80.0998, "activities": ["surfing"]},
+      {"name": "Hikkaduwa Nightclubs", "latitude": 6.1371, "longitude": 80.1042, "activities": ["nightlife", "dancing"]},
+      {"name": "Unawatuna Nightclubs", "latitude": 6.0090, "longitude": 80.2510, "activities": ["nightlife", "dancing"]},
+      {"name": "The Everest Futsal Court Galle", "latitude": 6.0281, "longitude": 80.2178, "activities": ["sports", "futsal"]},
+      {"name": "Jungle Beach", "latitude": 6.0063, "longitude": 80.2460, "activities": ["beach", "snorkeling", "hiking"]},
+      {"name": "Koggala Lake", "latitude": 5.9972, "longitude": 80.3203, "activities": ["boating", "nature", "bird watching"]},
+      {"name": "Sea Turtle Hatchery", "latitude": 6.0770, "longitude": 80.1402, "activities": ["nature", "education"]},
+      {"name": "National Maritime Museum", "latitude": 6.0250, "longitude": 80.2174, "activities": ["sightseeing", "history", "education"]},
+      {"name": "Stilt Fishermen", "latitude": 5.9800, "longitude": 80.3600, "activities": ["photography", "cultural"]},
+      {"name": "Martin Wickramasinghe Folk Museum", "latitude": 5.9706, "longitude": 80.3465, "activities": ["sightseeing", "history", "cultural"]}
+    ]
+  }
+  
