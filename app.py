@@ -7,11 +7,17 @@ app = Flask(__name__)
 with open('places.json', 'r') as f:
     places = json.load(f)['places']
 
-with open('accommodations.json', 'r') as f:
-    accommodations = json.load(f)['accommodations']
-
 with open('places_history.json', 'r') as f:
     places_history = json.load(f)['placesInGalle']
+
+with open('accommodations.json', 'r') as f:
+    accommodations_data = json.load(f)
+    accommodations_hikkaduwa = accommodations_data['Hikkaduwa Hotels']
+    accommodations_galle = accommodations_data['Galle Hotels']
+
+def save_json(data, filename):
+    with open(filename, 'w') as f:
+        json.dump(data, f, indent=2)
 
 @app.route('/hello', methods=['GET'])
 def hello_world():
@@ -50,17 +56,81 @@ def webhook():
 
     # Handle "SelectBeachHotelInHikkaduwa" intent
     elif intent == "SelectBeachHotelInHikkaduwa":
-        filtered_accommodations = [
-            acc for acc in accommodations if acc['type'] == 'hotel' and acc.get('location') == 'beachside'
-        ]
+        location_preference = parameters.get('hotelplace', '').lower()
+        filtered_accommodations = []
+
+        if "beachside" in location_preference:
+            filtered_accommodations = [
+                acc for acc in accommodations_hikkaduwa if acc['type'] == 'hotel' and acc.get('location') == 'beachside'
+            ]
+            response_text += "Here are some recommended beachside hotels in Hikkaduwa:\n\n"
+        elif "without beach" in location_preference:
+            filtered_accommodations = [
+                acc for acc in accommodations_hikkaduwa if acc['type'] == 'hotel' and acc.get('location') != 'beachside'
+            ]
+            response_text += "Here are some recommended hotels in Hikkaduwa (without beachside):\n\n"
+        else:
+            response_text = "Please specify whether you want 'beachside' or 'without beach' hotels."
+
         if filtered_accommodations:
-            response_text += f"Here are some recommended beachside hotels in Hikkaduwa:\n\n"
             for acc in filtered_accommodations:
                 response_text += f"Hotel Name: {acc['name']}\n"
                 response_text += f"Address: {acc['address']}\n"
-                response_text += f"Rating: {acc['rating']}\n\n"
+                response_text += f"Rating: {acc['rating']}\n"
+                response_text += f"Location: {acc['location']}\n\n"
         else:
-            response_text = "Sorry, there are no beachside hotels available in Hikkaduwa."
+            response_text = "Sorry, there are no hotels available in Hikkaduwa based on your preference."
+
+    # Handle "SelectVillaInHikkaduwa" intent
+    elif intent == "SelectVillaInHikkaduwa":
+        villa_place = parameters.get('VillaPlace', '').lower()
+        filtered_villas = []
+
+        if "beachside" in villa_place:
+            filtered_villas = [
+                acc for acc in accommodations_hikkaduwa if acc['type'] == 'villa' and acc.get('location') == 'beachside'
+            ]
+            response_text += "Here are some recommended beachside villas in Hikkaduwa:\n\n"
+        elif "without beach" in villa_place:
+            filtered_villas = [
+                acc for acc in accommodations_hikkaduwa if acc['type'] == 'villa' and acc.get('location') != 'beachside'
+            ]
+            response_text += "Here are some recommended villas in Hikkaduwa (without beachside):\n\n"
+        else:
+            response_text = "Please specify whether you want 'beachside' or 'without beach' villas."
+
+        if filtered_villas:
+            for acc in filtered_villas:
+                response_text += f"Villa Name: {acc['name']}\n"
+                response_text += f"Address: {acc['address']}\n"
+                response_text += f"Rating: {acc['rating']}\n"
+                response_text += f"Location: {acc['location']}\n\n"
+        else:
+            response_text = "Sorry, there are no villas available in Hikkaduwa based on your preference."
+
+   # Handle "SelectBeachHotelInGAlle" intent
+    elif intent == "SelectBeachHotelInGAlle":
+        location_preference = parameters.get('hotelPlace', '').lower()
+        if "beachside" in location_preference:
+            filtered_accommodations = [
+                acc for acc in accommodations_galle if acc['type'] == 'hotel' and acc.get('location') == 'beachside'
+            ]
+            response_text += "Here are some recommended beachside hotels in Galle:\n\n"
+        else:
+            filtered_accommodations = [
+                acc for acc in accommodations_galle if acc['type'] == 'hotel' and acc.get('location') != 'beachside'
+            ]
+            response_text += "Here are some recommended hotels in Galle (without beachside):\n\n"
+
+        if filtered_accommodations:
+            for acc in filtered_accommodations:
+                response_text += f"Hotel Name: {acc['name']}\n"
+                response_text += f"Address: {acc['address']}\n"
+                response_text += f"Rating: {acc['rating']}\n"
+                response_text += f"Location: {acc['location']}\n\n"
+        else:
+            response_text = "Sorry, there are no hotels available in Galle based on your preference."
+
 
     # Handle "PlacesInGalle" intent
     elif intent == "PlacesInGalle":
@@ -76,10 +146,6 @@ def webhook():
                 response_text += f"History: {place['history']}\n\n"
         else:
             response_text = f"Sorry, there are no historical places listed for {place_name.capitalize()}."
-
-    # Handle unrecognized intent
-    else:
-        response_text = "Sorry, I didn't understand that request."
 
     # Log the response for debugging
     print(f"Response text: {response_text}")

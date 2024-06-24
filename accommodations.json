@@ -1,15 +1,300 @@
 {
-    "accommodations": [
-      {"type": "hotel", "name": "Hikka Tranz by Cinnamon", "address": "Hikkaduwa, Sri Lanka", "rating": 4.5, "location": "beachside"},
-      {"type": "hotel", "name": "Coral Sands Hotel", "address": "Hikkaduwa, Sri Lanka", "rating": 4.2, "location": "beachside"},
-      {"type": "hotel", "name": "Citrus Hikkaduwa", "address": "Hikkaduwa, Sri Lanka", "rating": 4.0, "location": "beachside"},
-      {"type": "hotel", "name": "Hikkaduwa Beach Hotel", "address": "Hikkaduwa, Sri Lanka", "rating": 3.8, "location": "beachside"},
-      {"type": "hotel", "name": "Hotel Refresh Blue", "address": "Hikkaduwa, Sri Lanka", "rating": 4.1, "location": "beachside"},
-      {"type": "villa", "name": "Villa Saffron Hikkaduwa", "address": "Hikkaduwa, Sri Lanka", "rating": 4.9, "location": "beachside"},
-      {"type": "villa", "name": "Villa Shanthi", "address": "Hikkaduwa, Sri Lanka", "rating": 4.8, "location": "beachside"},
-      {"type": "villa", "name": "Villa Tara", "address": "Hikkaduwa, Sri Lanka", "rating": 4.7, "location": "beachside"},
-      {"type": "villa", "name": "Villa 46", "address": "Hikkaduwa, Sri Lanka", "rating": 4.6, "location": "beachside"},
-      {"type": "villa", "name": "Villa Birdlake", "address": "Hikkaduwa, Sri Lanka", "rating": 4.5, "location": "beachside"}
-    ]
-  }
-  
+  "Hikkaduwa Hotels": [
+    {
+      "type": "hotel",
+      "name": "Hikka Tranz by Cinnamon",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.5,
+      "location": "beachside"
+    },
+    {
+      "type": "hotel",
+      "name": "Coral Sands Hotel",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.2,
+      "location": "beachside"
+    },
+    {
+      "type": "hotel",
+      "name": "Citrus Hikkaduwa",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.0,
+      "location": "beachside"
+    },
+    {
+      "type": "hotel",
+      "name": "Hikkaduwa Beach Hotel",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 3.8,
+      "location": "beachside"
+    },
+    {
+      "type": "hotel",
+      "name": "Hotel Refresh Blue",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.1,
+      "location": "beachside"
+    },
+    {
+      "type": "villa",
+      "name": "Villa Saffron Hikkaduwa",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.9,
+      "location": "beachside"
+    },
+    {
+      "type": "villa",
+      "name": "Villa Shanthi",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.8,
+      "location": "beachside"
+    },
+    {
+      "type": "villa",
+      "name": "Villa Tara",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.7,
+      "location": "beachside"
+    },
+    {
+      "type": "villa",
+      "name": "Villa 46",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.6,
+      "location": "beachside"
+    },
+    {
+      "type": "villa",
+      "name": "Villa Birdlake",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.5,
+      "location": "beachside"
+    },
+    {
+      "type": "hotel",
+      "name": "Hotel Green Garden",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.3,
+      "location": "town"
+    },
+    {
+      "type": "hotel",
+      "name": "Hotel City View",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.2,
+      "location": "town"
+    },
+    {
+      "type": "hotel",
+      "name": "Hotel Hilltop",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.1,
+      "location": "inland"
+    },
+    {
+      "type": "hotel",
+      "name": "Hotel Sunset",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.0,
+      "location": "inland"
+    },
+    {
+      "type": "hotel",
+      "name": "Hotel Coral Rock",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.4,
+      "location": "beachside"
+    },
+    {
+      "type": "hotel",
+      "name": "Hotel Paradise",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.3,
+      "location": "beachside"
+    },
+    {
+      "type": "villa",
+      "name": "Villa Paradise",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.7,
+      "location": "beachside"
+    },
+    {
+      "type": "villa",
+      "name": "Villa Sea Breeze",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.6,
+      "location": "beachside"
+    },
+    {
+      "type": "villa",
+      "name": "Villa Ocean View",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.5,
+      "location": "beachside"
+    },
+    {
+      "type": "villa",
+      "name": "Villa Sunshine",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.4,
+      "location": "beachside"
+    },
+    {
+      "type": "hotel",
+      "name": "Hotel Riverside",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.3,
+      "location": "inland"
+    },
+    {
+      "type": "hotel",
+      "name": "Hotel Nature View",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.2,
+      "location": "inland"
+    },
+    {
+      "type": "hotel",
+      "name": "Hotel Forest Retreat",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.1,
+      "location": "inland"
+    },
+    {
+      "type": "hotel",
+      "name": "Hotel Urban Jungle",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.0,
+      "location": "inland"
+    },
+    {
+      "type": "villa",
+      "name": "Villa Forest Hills",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.9,
+      "location": "inland"
+    },
+    {
+      "type": "villa",
+      "name": "Villa Riverside Bliss",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.8,
+      "location": "inland"
+    },
+    {
+      "type": "villa",
+      "name": "Villa Garden View",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.7,
+      "location": "town"
+    },
+    {
+      "type": "villa",
+      "name": "Villa Mountain Breeze",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.6,
+      "location": "inland"
+    },
+    {
+      "type": "villa",
+      "name": "Villa Town Square",
+      "address": "Hikkaduwa, Sri Lanka",
+      "rating": 4.5,
+      "location": "town"
+    }
+  ],
+  "Galle Hotels": [
+    {
+      "type": "hotel",
+      "name": "Le Grand Galle by Asia Leisure",
+      "address": "Galle, Sri Lanka",
+      "rating": 4.8,
+      "location": "beachside"
+    },
+    {
+      "type": "hotel",
+      "name": "Jetwing Lighthouse",
+      "address": "Galle, Sri Lanka",
+      "rating": 4.7,
+      "location": "beachside"
+    },
+    {
+      "type": "hotel",
+      "name": "Amari Galle",
+      "address": "Galle, Sri Lanka",
+      "rating": 4.6,
+      "location": "beachside"
+    },
+    {
+      "type": "hotel",
+      "name": "The Fortress Resort & Spa",
+      "address": "Koggala, Galle, Sri Lanka",
+      "rating": 4.9,
+      "location": "beachside"
+    },
+    {
+      "type": "hotel",
+      "name": "Tamarind Hill by Asia Leisure",
+      "address": "Galle, Sri Lanka",
+      "rating": 4.5,
+      "location": "beachside"
+    },
+    {
+      "type": "hotel",
+      "name": "Agnus Unawatuna",
+      "address": "Unawatuna, Galle, Sri Lanka",
+      "rating": 4.4,
+      "location": "beachside"
+    },
+    {
+      "type": "hotel",
+      "name": "Fort Bazaar",
+      "address": "Galle Fort, Galle, Sri Lanka",
+      "rating": 4.8,
+      "location": "town"
+    },
+    {
+      "type": "hotel",
+      "name": "The Fort Printers",
+      "address": "Galle Fort, Galle, Sri Lanka",
+      "rating": 4.7,
+      "location": "town"
+    },
+    {
+      "type": "hotel",
+      "name": "Galle Fort Hotel",
+      "address": "Galle Fort, Galle, Sri Lanka",
+      "rating": 4.6,
+      "location": "town"
+    },
+    {
+      "type": "hotel",
+      "name": "The Lady Hill Hotel",
+      "address": "Galle, Sri Lanka",
+      "rating": 4.5,
+      "location": "hilltop"
+    },
+    {
+      "type": "hotel",
+      "name": "Tamarind Hill by Asia Leisure",
+      "address": "Galle, Sri Lanka",
+      "rating": 4.4,
+      "location": "inland"
+    },
+    {
+      "type": "hotel",
+      "name": "Kahanda Kanda",
+      "address": "Angulugaha, Galle, Sri Lanka",
+      "rating": 4.8,
+      "location": "inland"
+    },
+    {
+      "type": "hotel",
+      "name": "Apa Villa Illuketia",
+      "address": "Galle, Sri Lanka",
+      "rating": 4.7,
+      "location": "inland"
+    }
+  ]
+}
