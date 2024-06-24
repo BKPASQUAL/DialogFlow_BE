@@ -16,7 +16,6 @@ with open('accommodations.json', 'r') as f:
     accommodations_galle = accommodations_data['Galle Hotels']
     accommodations_galle_villas = accommodations_data['Galle Villas']
 
-
 def save_json(data, filename):
     with open(filename, 'w') as f:
         json.dump(data, f, indent=2)
@@ -110,7 +109,6 @@ def webhook():
         else:
             response_text = "Sorry, there are no villas available in Hikkaduwa based on your preference."
 
-         
     # Handle "SelectVillaInGalle" intent
     elif intent == "SelectVillaInGalle":
         villa_place = parameters.get('villaplace', '').lower()
@@ -138,8 +136,7 @@ def webhook():
         else:
             response_text = "Sorry, there are no villas available in Galle based on your preference."
 
-
-   # Handle "SelectBeachHotelInGAlle" intent
+    # Handle "SelectBeachHotelInGAlle" intent
     elif intent == "SelectBeachHotelInGAlle":
         location_preference = parameters.get('hotelPlace', '').lower()
         if "beachside" in location_preference:
@@ -162,7 +159,6 @@ def webhook():
         else:
             response_text = "Sorry, there are no hotels available in Galle based on your preference."
 
-
     # Handle "PlacesInGalle" intent
     elif intent == "PlacesInGalle":
         place_name = parameters.get('places', '').lower()
@@ -177,6 +173,22 @@ def webhook():
                 response_text += f"History: {place['history']}\n\n"
         else:
             response_text = f"Sorry, there are no historical places listed for {place_name.capitalize()}."
+
+    # Handle "SelectActivitiesGalle" intent
+    elif intent == "SelectActivitiesGalle":
+        selected_activities = parameters.get('activities', [])
+        recommended_places = [
+            place for place in places if 'Galle' in place['name'] and
+            any(activity in place['activities'] for activity in selected_activities)
+        ]
+
+        if recommended_places:
+            response_text += f"Here are some places in Galle where you can do {', '.join(selected_activities)}:\n\n"
+            for place in recommended_places:
+                response_text += f"{place['name']}:\n"
+                response_text += f"Activities: {', '.join(place['activities'])}\n\n"
+        else:
+            response_text = f"Sorry, there are no places in Galle offering {', '.join(selected_activities)}."
 
     # Log the response for debugging
     print(f"Response text: {response_text}")
