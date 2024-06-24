@@ -296,5 +296,36 @@
       "rating": 4.7,
       "location": "inland"
     }
+  ],
+
+  "Galle Villas": [
+    {
+      "type": "villa",
+      "name": "Villa Sea View",
+      "address": "Galle, Sri Lanka",
+      "rating": 4.9,
+      "location": "beachside"
+    },
+    {
+      "type": "villa",
+      "name": "Villa Sunset Retreat",
+      "address": "Galle, Sri Lanka",
+      "rating": 4.8,
+      "location": "beachside"
+    },
+    {
+      "type": "villa",
+      "name": "Villa Mountain View",
+      "address": "Galle, Sri Lanka",
+      "rating": 4.7,
+      "location": "inland"
+    },
+    {
+      "type": "villa",
+      "name": "Villa Forest Retreat",
+      "address": "Galle, Sri Lanka",
+      "rating": 4.6,
+      "location": "inland"
+    }
   ]
 }

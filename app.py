@@ -14,6 +14,8 @@ with open('accommodations.json', 'r') as f:
     accommodations_data = json.load(f)
     accommodations_hikkaduwa = accommodations_data['Hikkaduwa Hotels']
     accommodations_galle = accommodations_data['Galle Hotels']
+    accommodations_galle_villas = accommodations_data['Galle Villas']
+
 
 def save_json(data, filename):
     with open(filename, 'w') as f:
@@ -107,6 +109,35 @@ def webhook():
                 response_text += f"Location: {acc['location']}\n\n"
         else:
             response_text = "Sorry, there are no villas available in Hikkaduwa based on your preference."
+
+         
+    # Handle "SelectVillaInGalle" intent
+    elif intent == "SelectVillaInGalle":
+        villa_place = parameters.get('villaplace', '').lower()
+        filtered_villas = []
+
+        if "beachside" in villa_place:
+            filtered_villas = [
+                acc for acc in accommodations_galle_villas if acc.get('location') == 'beachside'
+            ]
+            response_text += "Here are some recommended beachside villas in Galle:\n\n"
+        elif "without beach" in villa_place:
+            filtered_villas = [
+                acc for acc in accommodations_galle_villas if acc.get('location') != 'beachside'
+            ]
+            response_text += "Here are some recommended villas in Galle (without beachside):\n\n"
+        else:
+            response_text = "Please specify whether you want 'beachside' or 'without beach' villas."
+
+        if filtered_villas:
+            for acc in filtered_villas:
+                response_text += f"Villa Name: {acc['name']}\n"
+                response_text += f"Address: {acc['address']}\n"
+                response_text += f"Rating: {acc['rating']}\n"
+                response_text += f"Location: {acc['location']}\n\n"
+        else:
+            response_text = "Sorry, there are no villas available in Galle based on your preference."
+
 
    # Handle "SelectBeachHotelInGAlle" intent
     elif intent == "SelectBeachHotelInGAlle":
