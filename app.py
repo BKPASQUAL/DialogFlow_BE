@@ -43,7 +43,7 @@ def webhook():
     if intent == "SelectActivitiesHikkaduwa":
         selected_activities = parameters.get('Activities', [])
         recommended_places = [
-            place for place in places if 'Hikkaduwa' in place['name'] and
+            place for place in places if place['location'] == 'Hikkaduwa' and
             any(activity in place['activities'] for activity in selected_activities)
         ]
 
@@ -178,7 +178,7 @@ def webhook():
     elif intent == "SelectActivitiesGalle":
         selected_activities = parameters.get('activities', [])
         recommended_places = [
-            place for place in places if 'Galle' in place['name'] and
+            place for place in places if place['location'] == 'Galle' and
             any(activity in place['activities'] for activity in selected_activities)
         ]
 
